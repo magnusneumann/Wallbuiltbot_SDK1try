@@ -1,0 +1,5 @@
+[ ] YOLO-Bibliothek: Oben im Code import cv2 und from ultralytics import YOLO (oder welche Lib ihr nutzt) einkommentieren.
+
+    [ ] Modell-Pfad: In der on_setup den absoluten Pfad zu eurer .pt-Datei (den trainierten Gewichten) eintragen.
+
+    [ ] 2D-Transformation (_pixel_to_world_2d): Ihr braucht hier die sogenannte "Pinhole Camera"-Mathematik. Du nimmst die Pixel u und v, rechnest sie mit eurer camera_matrix in einen Strahl um und schneidest diesen Strahl mit der Tisch-Ebene (da wir wissen, dass die Klötze alle auf dem Tisch liegen, also z.B. ZWelt​=0).

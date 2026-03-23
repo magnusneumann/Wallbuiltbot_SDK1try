@@ -1,0 +1,50 @@
+{
+  "$schema": "https://docs.aica.tech/schemas/1-1-2/component.schema.json",
+  "name": "Master List Manager",
+  "description": {
+    "brief": "DataHandler und Master-Planer",
+    "details": "Sammelt Daten, filtert und erstellt PPL-Listen."
+  },
+  "registration": "kloetzchenpackagetrynrone::MasterListManager",
+  "inherits": "modulo_components::LifecycleComponent",
+  "inputs": [
+    {
+      "display_name": "Ist Pose In",
+      "description": "Aufnahme-Pose",
+      "signal_name": "ist_pose_in",
+      "signal_type": "cartesian_pose"
+    },
+    {
+      "display_name": "YOLO List In",
+      "description": "YOLO-Klotzdaten",
+      "signal_name": "yolo_list_in",
+      "signal_type": "double_array"
+    },
+    {
+      "display_name": "Line Ex List In",
+      "description": "Gefundene Linien",
+      "signal_name": "line_ex_list_in",
+      "signal_type": "double_array"
+    }
+  ],
+  "outputs": [
+    {
+      "display_name": "Master Dropoff Out",
+      "description": "Bester Belegungsplan",
+      "signal_name": "master_dropoff_out",
+      "signal_type": "double_array"
+    },
+    {
+      "display_name": "Master Overview Out",
+      "description": "Posen-Historie für Klötze",
+      "signal_name": "master_overview_out",
+      "signal_type": "double_array"
+    },
+    {
+      "display_name": "Filtered YOLO Out",
+      "description": "Kollisionsfreie Klötze",
+      "signal_name": "filtered_yolo_out",
+      "signal_type": "double_array"
+    }
+  ]
+}

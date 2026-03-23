@@ -1,0 +1,70 @@
+{
+  "$schema": "https://docs.aica.tech/schemas/1-1-2/component.schema.json",
+  "name": "Pose Triggered Camera",
+  "description": {
+    "brief": "Sicherer Snapshot-Block",
+    "details": "Friert Bild und Posen synchron nach Delay ein."
+  },
+  "registration": "kloetzchenpackagetrynrone::PoseTriggeredCamera",
+  "inherits": "modulo_components::LifecycleComponent",
+  "inputs": [
+    {
+      "display_name": "Take Img",
+      "description": "Trigger-Signal",
+      "signal_name": "take_img",
+      "signal_type": "bool"
+    },
+    {
+      "display_name": "Trajectory Success",
+      "description": "Roboter steht still",
+      "signal_name": "trajectory_success",
+      "signal_type": "bool"
+    },
+    {
+      "display_name": "Ist Pose In",
+      "description": "Aktuelle Roboterpose",
+      "signal_name": "ist_pose_in",
+      "signal_type": "cartesian_pose"
+    },
+    {
+      "display_name": "Cam Ist Pose In",
+      "description": "Aktuelle Kamerapose",
+      "signal_name": "cam_ist_pose_in",
+      "signal_type": "cartesian_pose"
+    },
+    {
+      "display_name": "Image Stream",
+      "description": "Kamera Live-Stream",
+      "signal_name": "image_stream",
+      "signal_type": "other",
+      "custom_signal_type": "state_representation::Image"
+    }
+  ],
+  "outputs": [
+    {
+      "display_name": "Img Taken",
+      "description": "Handshake zurück",
+      "signal_name": "img_taken",
+      "signal_type": "bool"
+    },
+    {
+      "display_name": "Ist Pose Out",
+      "description": "Eingefrorene Roboterpose",
+      "signal_name": "ist_pose_out",
+      "signal_type": "cartesian_pose"
+    },
+    {
+      "display_name": "Cam Ist Pose Out",
+      "description": "Eingefrorene Kamerapose",
+      "signal_name": "cam_ist_pose_out",
+      "signal_type": "cartesian_pose"
+    },
+    {
+      "display_name": "Image Out",
+      "description": "Gespeichertes Bild",
+      "signal_name": "image_out",
+      "signal_type": "other",
+      "custom_signal_type": "state_representation::Image"
+    }
+  ]
+}

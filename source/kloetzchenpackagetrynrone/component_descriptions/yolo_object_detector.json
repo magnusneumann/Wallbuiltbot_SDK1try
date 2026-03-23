@@ -1,0 +1,58 @@
+{
+  "$schema": "https://docs.aica.tech/schemas/1-1-2/component.schema.json",
+  "name": "YOLO Object Detector",
+  "description": {
+    "brief": "KI Bildauswertung",
+    "details": "Findet Klötze im Bild und berechnet 2D Weltkoordinaten."
+  },
+  "registration": "kloetzchenpackagetrynrone::YoloObjectDetector",
+  "inherits": "modulo_components::LifecycleComponent",
+  "inputs": [
+    {
+      "display_name": "Image In",
+      "description": "Eingefrorenes Bild",
+      "signal_name": "image_in",
+      "signal_type": "other",
+      "custom_signal_type": "state_representation::Image"
+    },
+    {
+      "display_name": "Ist Pose In",
+      "description": "Aufnahme-Pose des Roboters",
+      "signal_name": "ist_pose_in",
+      "signal_type": "cartesian_pose"
+    },
+    {
+      "display_name": "Cam Ist Pose In",
+      "description": "Aufnahme-Pose der Kamera",
+      "signal_name": "cam_ist_pose_in",
+      "signal_type": "cartesian_pose"
+    }
+  ],
+  "outputs": [
+    {
+      "display_name": "YOLO List",
+      "description": "Gefundene Klötze",
+      "signal_name": "yolo_list",
+      "signal_type": "double_array"
+    },
+    {
+      "display_name": "Debug Img",
+      "description": "Bild mit Bounding Boxes",
+      "signal_name": "debug_img",
+      "signal_type": "other",
+      "custom_signal_type": "state_representation::Image"
+    },
+    {
+      "display_name": "Ist Pose Out",
+      "description": "Durchgereichte Pose",
+      "signal_name": "ist_pose_out",
+      "signal_type": "cartesian_pose"
+    },
+    {
+      "display_name": "YOLO Done Trigger",
+      "description": "Impuls für Linienerkennung",
+      "signal_name": "yolo_done_trigger",
+      "signal_type": "bool"
+    }
+  ]
+}

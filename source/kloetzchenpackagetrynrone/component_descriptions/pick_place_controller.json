@@ -1,0 +1,75 @@
+{
+  "$schema": "https://docs.aica.tech/schemas/1-1-2/component.schema.json",
+  "name": "Pick and Place Controller",
+  "description": {
+    "brief": "Zustandsmaschine für Pick&Place",
+    "details": "Arbeitet Listen ab und steuert Vakuum."
+  },
+  "registration": "kloetzchenpackagetrynrone::PickPlaceController",
+  "inherits": "modulo_components::LifecycleComponent",
+  "inputs": [
+    {
+      "display_name": "Trigger PPL",
+      "description": "Startsignal",
+      "signal_name": "trigger_ppl",
+      "signal_type": "bool"
+    },
+    {
+      "display_name": "Trajectory Success",
+      "description": "Roboter an Position",
+      "signal_name": "trajectory_success",
+      "signal_type": "bool"
+    },
+    {
+      "display_name": "Img Taken",
+      "description": "Kamera Handshake",
+      "signal_name": "img_taken",
+      "signal_type": "bool"
+    },
+    {
+      "display_name": "Filtered YOLO In",
+      "description": "Bereinigte Klötze",
+      "signal_name": "filtered_yolo_in",
+      "signal_type": "double_array"
+    },
+    {
+      "display_name": "Master Dropoff In",
+      "description": "Ablageplätze",
+      "signal_name": "master_dropoff_in",
+      "signal_type": "double_array"
+    },
+    {
+      "display_name": "Master Overview In",
+      "description": "Explorations-Posen",
+      "signal_name": "master_overview_in",
+      "signal_type": "double_array"
+    },
+    {
+      "display_name": "Depth Image In",
+      "description": "Tiefenbild für Z-Achse",
+      "signal_name": "depth_image_in",
+      "signal_type": "other",
+      "custom_signal_type": "state_representation::Image"
+    }
+  ],
+  "outputs": [
+    {
+      "display_name": "Target Pose Out",
+      "description": "Nächster Wegpunkt",
+      "signal_name": "target_pose_out",
+      "signal_type": "cartesian_pose"
+    },
+    {
+      "display_name": "Take Img Out",
+      "description": "Trigger an Kamera",
+      "signal_name": "take_img_out",
+      "signal_type": "bool"
+    },
+    {
+      "display_name": "Vacuum On",
+      "description": "Sauger aktivieren",
+      "signal_name": "vacuum_on",
+      "signal_type": "bool"
+    }
+  ]
+}

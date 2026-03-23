@@ -1,0 +1,16 @@
+To-Do Liste: PickPlaceController (PPL) Nacharbeiten
+
+    [ ] 1. Tiefenbild-Entpackung (depth_array) fixen:
+    Herausfinden, wie die exakte AICA-Methode in der aktuellen state_representation heißt, um aus dem Image-Objekt ein bearbeitbares Array zu machen (meist depth_image_obj.data oder depth_image_obj.get_data()). Die Variable depth_array muss in der Funktion _get_depth_median sauber deklariert werden.
+
+    [ ] 2. Die 3D-Mathe für die echte Z-Höhe einbauen:
+    Die Funktion _get_depth_median vervollständigen. Der reine Tiefenabstand vom Sensor reicht nicht. Das 2D-Pixel (x_grob, y_grob) muss zusammen mit dem Tiefenwert aus dem Array über die Kameramatrix (Intrinsics) und die aktuelle Kamerapose in das Weltkoordinatensystem umgerechnet werden, um das echte z_pick zu erhalten.
+
+    [ ] 3. Das "Nach-unten"-Quaternion eintragen:
+    Sobald du das exakte Quaternion für euren KUKA-Roboter hast (für "Sauger zeigt strikt nach unten"), muss der Platzhalter [1.0, 0.0, 0.0, 0.0] in der Hilfsfunktion _set_target_pose durch deine realen Werte ersetzt werden.
+
+    [ ] 4. "Smart Pick" (Ausrichtung beim Greifen) integrieren:
+    Die Logik so anpassen, dass der Block beim Pick-Vorgang einen Winkel berücksichtigt. Voraussetzung: Der YOLO-Block muss die Liste filtered_yolo_in um den Winkel (Rotation der Bounding Box) erweitern. In _set_target_pose muss dieser Winkel dann auf das "Nach-unten"-Quaternion aufgerechnet werden.
+
+    [ ] 5. TF-Frames sauber trennen (Kamera vs. TCP):
+    Da AICA das Kamera-Frame publisht, muss im Code (oder beim Testen) final entschieden werden: Senden wir die WAIT_IMG-Posen mit dem Referenz-Frame "camera_link" an den JTC (dann fährt die Kamera exakt dorthin und wir brauchen keinen Offset im Code) oder senden wir alles im "base_link" und ziehen den kamera_tcp_abstand manuell ab?

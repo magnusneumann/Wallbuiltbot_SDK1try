@@ -1,0 +1,18 @@
+self.depth_image_in = Image()
+        self.add_input("_depth_image_in", "depth_image_in", Image)
+Das wurde mir von meinem kollegen empfohlen, statt np.array. ist das so besser? muss nun im code eine passage verändert werden?
+Image typ depth Image, wie mache ich aus abstand z höhe in world?
+die Z_pick wird doch aus einer overview position heraus bestimmt, wenn ich es richtig im kopf habe. da schauen wir nicht senkrecht auf den klotz herab, bedeutet das tiefenbild ergebnis des klotzzentrums muss noch in eine Z_pick höhe umgewandelt werden.
+self.kamera_tcp_abstand = 0.05? wofür ist das braucht es die TF von TCP zu Kamera?
+from modulo_components.lifecycle_component import LifecycleComponent so muss importiert werden
+in die requirements habe ich numpy==1.26.4 geschrieben, sonst lässt sich aus erfahrung kein paket bauen.
+Mein kollege meinte es macht keinen Unterschied ob über die requirements.txt (von wizard erstellt) oder über die toml die pakete installiert werden. ist das so?
+
+so sieht die setup aus, der erste eintrag ist ein wizard beispiel
+[options.entry_points]
+python_components =
+    # register Python components
+    kloetzchenpackagetrynrone::PyLifecycleComponent = kloetzchenpackagetrynrone.py_lifecycle_component:PyLifecycleComponent
+    kloetzchenpackagetrynrone::PickPlaceController = kloetzchenpackagetrynrone.pick_place_controller:PickPlaceController
+
+im PPL muss noch die HomePose hard gecodet werden das frame3

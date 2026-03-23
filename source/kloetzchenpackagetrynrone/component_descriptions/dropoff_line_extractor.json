@@ -1,0 +1,52 @@
+{
+  "$schema": "https://docs.aica.tech/schemas/1-1-2/component.schema.json",
+  "name": "Dropoff Line Extractor",
+  "description": {
+    "brief": "Mustererkennung Ablageplätze",
+    "details": "Findet freie Linien im Bild."
+  },
+  "registration": "kloetzchenpackagetrynrone::DropoffLineExtractor",
+  "inherits": "modulo_components::LifecycleComponent",
+  "inputs": [
+    {
+      "display_name": "Trigger PPL",
+      "description": "Kill-Switch bei aktiver PPL-Phase",
+      "signal_name": "trigger_ppl",
+      "signal_type": "bool"
+    },
+    {
+      "display_name": "Image In",
+      "description": "Snapshot-Bild",
+      "signal_name": "image_in",
+      "signal_type": "other",
+      "custom_signal_type": "state_representation::Image"
+    },
+    {
+      "display_name": "Cam Ist Pose",
+      "description": "Kamerapose zur Transformation",
+      "signal_name": "cam_ist_pose",
+      "signal_type": "cartesian_pose"
+    },
+    {
+      "display_name": "YOLO Done Trigger",
+      "description": "Event-Trigger von YOLO",
+      "signal_name": "yolo_done_trigger",
+      "signal_type": "bool"
+    }
+  ],
+  "outputs": [
+    {
+      "display_name": "Dropoff Coords List",
+      "description": "Gefundene Ablagekoordinaten",
+      "signal_name": "dropoff_coords_list",
+      "signal_type": "double_array"
+    },
+    {
+      "display_name": "Debug Img",
+      "description": "Bild mit erkannten Linien",
+      "signal_name": "debug_img",
+      "signal_type": "other",
+      "custom_signal_type": "state_representation::Image"
+    }
+  ]
+}

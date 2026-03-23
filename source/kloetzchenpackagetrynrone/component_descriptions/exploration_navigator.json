@@ -1,0 +1,71 @@
+{
+  "$schema": "https://docs.aica.tech/schemas/1-1-2/component.schema.json",
+  "name": "Exploration Navigator",
+  "description": {
+    "brief": "Steuert die Posen-Exploration",
+    "details": "Fährt Wegpunkte ab und managt den Kamera-Handshake."
+  },
+  "registration": "kloetzchenpackagetrynrone::ExplorationNavigator",
+  "inherits": "modulo_components::LifecycleComponent",
+  "inputs": [
+    {
+      "display_name": "Ist Pose",
+      "description": "Echte Roboterpose",
+      "signal_name": "ist_pose",
+      "signal_type": "cartesian_pose"
+    },
+    {
+      "display_name": "Target Pose In (Gateway)",
+      "description": "Zielpose vom PPL",
+      "signal_name": "target_pose_in",
+      "signal_type": "cartesian_pose"
+    },
+    {
+      "display_name": "Take Img In (Gateway)",
+      "description": "Bild-Trigger vom PPL",
+      "signal_name": "take_img_in",
+      "signal_type": "bool"
+    },
+    {
+      "display_name": "Img Taken",
+      "description": "Handshake von Kamera",
+      "signal_name": "img_taken",
+      "signal_type": "bool"
+    }
+  ],
+  "outputs": [
+    {
+      "display_name": "Target Pose Out",
+      "description": "Anzufahrende Zielpose",
+      "signal_name": "target_pose_out",
+      "signal_type": "cartesian_pose"
+    },
+    {
+      "display_name": "Take Img Out",
+      "description": "Trigger an Kamera",
+      "signal_name": "take_img_out",
+      "signal_type": "bool"
+    },
+    {
+      "display_name": "Trajectory Success",
+      "description": "Ziel erreicht",
+      "signal_name": "trajectory_success",
+      "signal_type": "bool"
+    },
+    {
+      "display_name": "Trigger PPL",
+      "description": "Startet Pick&Place",
+      "signal_name": "trigger_ppl",
+      "signal_type": "bool"
+    }
+  ],
+  "parameters": [
+    {
+      "display_name": "YAML Pfad",
+      "description": "Pfad zur ExplCoords.yaml",
+      "parameter_name": "yaml_path",
+      "parameter_type": "string",
+      "default_value": "/home/ros2/ws/src/kloetzchenpackagetrynrone/config/ExplCoords.yaml"
+    }
+  ]
+}
